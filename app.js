@@ -14,21 +14,41 @@ const addBook = () => {
 
 }
 
-const form = document.querySelector('form');
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const pages = parseInt(document.querySelector('#pages'));
+let form = document.querySelector('form');
+let title = document.querySelector('#title');
+let author = document.querySelector('#author');
+let pages = document.querySelector('#pages');
+const bookSection = document.querySelector('#bookSection');
+let haveRead = "";
 const radioForm = document.querySelectorAll('input[name="haveRead"]');
-for (let i = 0; i < radioForm.length; i++) {
-    if (radioForm[i].checked) {
-        const haveRead = radioForm[i].value;
-        break;
-    }
-}
 
-const bookSection = document.querySelector('.bookSection');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-    console.log(e);
+    const divCard = document.createElement('div');
+    divCard.classList.add('card');
+
+    const displayTitle = document.createElement('h4');
+    displayTitle.innerText = title.value;
+    const displayAuthor = document.createElement('h4');
+    displayAuthor.innerText = author.value;
+    const displayPages = document.createElement('h4');
+    displayPages.innerText = parseInt(pages.value);
+
+    for (let i = 0; i < radioForm.length; i++) {
+        if (radioForm[i].checked) {
+            haveRead = radioForm[i].value;
+            console.log(haveRead);
+            break;
+        }
+    }
+    const displayRead = document.createElement('h4');
+    displayRead.innerHTML = `Already Read? ${haveRead}`;
+
+    divCard.appendChild(displayTitle);
+    divCard.appendChild(displayAuthor);
+    divCard.appendChild(displayPages);
+    divCard.appendChild(displayRead);
+
+    bookSection.appendChild(divCard);
 });
