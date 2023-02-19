@@ -33,7 +33,7 @@ form.addEventListener('submit', e => {
     const displayAuthor = document.createElement('h4');
     displayAuthor.innerText = author.value;
     const displayPages = document.createElement('h4');
-    displayPages.innerText = parseInt(pages.value);
+    displayPages.innerHTML = `${parseInt(pages.value)}  pages`;
 
     for (let i = 0; i < radioForm.length; i++) {
         if (radioForm[i].checked) {
@@ -45,6 +45,10 @@ form.addEventListener('submit', e => {
     const displayRead = document.createElement('h4');
     displayRead.innerHTML = `Already Read? ${haveRead}`;
 
+    const closeBtn = document.createElement('button'); 
+    closeBtn.classList.add('closeBtn');
+    closeBtn.innerText = 'X';
+    divCard.appendChild(closeBtn);
     divCard.appendChild(displayTitle);
     divCard.appendChild(displayAuthor);
     divCard.appendChild(displayPages);
@@ -52,3 +56,4 @@ form.addEventListener('submit', e => {
 
     bookSection.appendChild(divCard);
 });
+
