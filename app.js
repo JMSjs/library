@@ -10,8 +10,8 @@ function Book(title, author, pages, didIRead) {
     }
 }
 
-const addBook = () => {
-
+const addBook = (obj) => {
+    library.push(obj);
 }
 
 let form = document.querySelector('form');
@@ -45,6 +45,8 @@ form.addEventListener('submit', e => {
     const displayRead = document.createElement('h4');
     displayRead.innerHTML = `Already Read? ${haveRead}`;
 
+    const book = new Book(title.value, author.value, parseInt(pages.value), haveRead);
+    addBook(book);
     const closeBtn = document.createElement('button'); 
     closeBtn.classList.add('closeBtn');
     closeBtn.innerText = 'X';
