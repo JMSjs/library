@@ -1,11 +1,15 @@
 let library = [];
 
-function Book(title, author, pages, didIRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.didIRead = didIRead;
-    this.info = function () {
+//using a class instead of a constructor function
+class Book {
+    constructor(title, author, pages, didIRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.didIRead = didIRead;
+    }
+    
+    info() {
         return `The book ${this.title} by ${this.author} has ${this.pages} pages. Did you read this already: ${this.didIRead}.`;
     }
 }
